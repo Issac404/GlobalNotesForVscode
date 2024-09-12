@@ -1,7 +1,5 @@
-# congwen README
+# 功能介绍
 
-This is the README for your extension "congwen". After writing up a brief description, we recommend including the following sections.
+插件提供了一个可以访问全局 markdown 文件夹的入口
 
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+The plugin provides an entry to access the global markdown folder
