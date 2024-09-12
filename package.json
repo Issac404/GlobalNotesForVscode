@@ -1,0 +1,102 @@
+{
+    "name": "global-notes",
+    "displayName": "global-notes",
+    "version": "0.0.1",
+    "publisher": "congwen",
+    "description": "Provides an entry point to your global folder.",
+    "private": true,
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Issac404/GlobalNotesForVscode.git"
+    },
+    "engines": {
+        "vscode": "^1.93.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "globalNotes.openNotes",
+                "title": "Open Notes"
+            },
+            {
+                "command": "globalNotes.createNote",
+                "title": "Create Note"
+            },
+            {
+                "command": "globalNotes.deleteNote",
+                "title": "Delete Note"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "globalNotes",
+                    "title": "Global Notes",
+                    "icon": "resources/dep.svg"
+                }
+            ]
+        },
+        "views": {
+            "globalNotes": [
+                {
+                    "id": "globalNotes",
+                    "name": "Node Dependencies",
+                    "icon": "resources/dep.svg",
+                    "contextualTitle": "Package Explorer"
+                }
+            ]
+        },
+        "menus": {
+            "view/title": [
+                {
+                    "command": "globalNotes.createNote",
+                    "when": "view == globalNotes",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "globalNotes.deleteNote",
+                    "when": "view == globalNotes && viewItem == noteItem",
+                    "group": "inline"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "GlobalNotes",
+            "properties": {
+                "GlobalNotes.directory": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Directory path for your global notes"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.93.0",
+        "@types/mocha": "^10.0.7",
+        "@types/node": "20.x",
+        "@typescript-eslint/eslint-plugin": "^8.3.0",
+        "@typescript-eslint/parser": "^8.3.0",
+        "eslint": "^9.9.1",
+        "typescript": "^5.5.4",
+        "@vscode/test-cli": "^0.0.10",
+        "@vscode/test-electron": "^2.4.1"
+    }
+}
